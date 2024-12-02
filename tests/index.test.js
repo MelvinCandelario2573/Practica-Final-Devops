@@ -1,8 +1,8 @@
-const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
-describe('Página Web', function () {
-  it('debería contener "Hola Mundo"', function () {
-    const contenido = '<h1>Hola Mundo soy Melvin Candelario!</h1>';
-    assert(contenido.includes("Hola Mundo"));
-  });
+test('La página debe contener "Hola Mundo"', () => {
+    const filePath = path.join(__dirname, '../index.html');
+    const html = fs.readFileSync(filePath, 'utf8');
+    expect(html).toContain('<h1>Hola Mundo</h1>');
 });
